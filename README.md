@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/cgauge/password-strength-lib.svg?branch=master)](https://travis-ci.org/cgauge/password-strength-lib)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cgauge/password-strength-lib/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cgauge/password-strength-lib/?branch=master)
 
 # CustomerGauge Password Strength Library
 
