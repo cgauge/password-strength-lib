@@ -31,5 +31,7 @@ class PersistRuleChainTest extends TestCase
         $validate = new PersistRuleChain($rule);
 
         self::assertFalse($validate('password'));
+
+        self::assertCount(1, $validate->exceptions());
     }
 }
