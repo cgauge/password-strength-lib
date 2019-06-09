@@ -8,7 +8,19 @@ use CustomerGauge\Password\RuleChain;
 
 class RuleChainTest extends TestCase
 {
-    public function test_it_can_validate_all_rules()
+    public function test_it_can_validate_rules()
+    {
+        $rule = $this->createMock(Rule::class);
+
+        $rule->expects($this->once())
+            ->method('__invoke');
+
+        $validate = new RuleChain($rule);
+
+        $validate('password');
+    }
+
+    public function test_it_can_validate_callables()
     {
         $function = function() {};
 
@@ -22,8 +34,8 @@ class RuleChainTest extends TestCase
         $validate = new RuleChain(
             'is_string',
             $function,
-            $rule,
-            [$customMethod, 'customMethod']
+            [$customMethod, 'customMethod'],
+            $rule
         );
 
         $validate('password');

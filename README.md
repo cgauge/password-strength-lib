@@ -56,7 +56,40 @@ try {
 
 // output: Password should have at least 3 digit character(s) but 2 found.
 ```
+## Persist Rule Chain
 
-# LICENSE
+Use PersistRuleChain class when you want to continue the execution even if a rule throws an InvalidPassword exception.
 
-MIT
+```php
+use Customergauge\Password\Rule\Lowercase;
+use Customergauge\Password\Rule\Uppercase;
+use Customergauge\Password\Rule\Length;
+use Customergauge\Password\RuleChain;
+use Customergauge\Password\Exception\InvalidPassword;
+
+$validate = new PersistRuleChain(
+  new Lowercase(2),
+  new Uppercase(2),
+  new Length(10),
+  new Digit(3)
+);
+
+$password = "ABcd00efgh";
+
+if ($validate($password)) {
+    echo "valid";
+} else {
+    echo "invalid";
+    // It is possible to get all exceptions using $validate->exceptions();
+}
+
+// output: invalid
+```
+
+# Contributing
+
+Contributions are always welcome, please have a look at our issues to see if there's something you could help with.
+
+# License
+
+Password Strength is licensed under MIT license.

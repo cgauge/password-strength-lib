@@ -6,6 +6,6 @@ namespace CustomerGauge\Password\Exception;
 
 use InvalidArgumentException;
 
-abstract class InvalidPassword extends InvalidArgumentException
+class InvalidPassword extends InvalidArgumentException
 {
 }
