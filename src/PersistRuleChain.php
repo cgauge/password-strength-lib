@@ -30,6 +30,8 @@ final class PersistRuleChain
 
     public function __invoke(string $password) : bool
     {
+        $this->exceptions = [];
+        
         foreach ($this->rules as $validate) {
             try {
                 $validate($password);
