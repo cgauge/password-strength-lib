@@ -30,8 +30,7 @@ class InvalidLength extends InvalidPassword
     public static function requires(string $type, int $required, int $provided) : self
     {
         $message = sprintf(
-            'The %s length should be %d character(s) and %d was provided.',
-            $type,
+            'Your password should have a minimum length of %d characters. %d were provided.',
             $required,
             $provided
         );

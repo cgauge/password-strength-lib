@@ -27,6 +27,6 @@ class SequencialNumber extends InvalidPassword
 {
     public static function notAllowed() : self
     {
-        return new static('Sequential numbers are not allowed.');
+        return new static('Your password can not contain sequential numbers.');
     }
 }

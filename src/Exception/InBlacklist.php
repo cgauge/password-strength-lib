@@ -29,6 +29,6 @@ class InBlacklist extends InvalidPassword
 {
     public static function contains(string $word) : self
     {
-        return new static(sprintf('Word [%s] is not valid.', $word));
+        return new static(sprintf('Your password can not contain "%s".', $word));
     }
 }

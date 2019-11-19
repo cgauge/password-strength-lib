@@ -29,6 +29,6 @@ class WeakTopology extends InvalidPassword
 {
     public static function matches(string $topology) : self
     {
-        return new static(sprintf('Common topology [%s] is not allowed.', $topology));
+        return new static(sprintf('Your password can not follow common password patterns. Try to avoid starting with a uppercase letter, and/or ending with a special character.'));
     }
 }

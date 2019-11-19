@@ -29,6 +29,6 @@ class InvalidName extends InvalidPassword
 {
     public static function contains(string $name) : self
     {
-        return new static(sprintf('The [%s] should not be used.', $name));
+        return new static(sprintf('Your password can not contain your username.'));
     }
 }
