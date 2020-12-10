@@ -46,7 +46,9 @@ final class Blacklist implements Rule
 
     public function __invoke(string $password) : void
     {
+        $password = mb_strtolower($password, $this->encoding);
         foreach ($this->words as $word) {
+            $word = mb_strtolower($word, $this->encoding);
             if (mb_strpos($password, $word, 0, $this->encoding) !== false) {
                 throw InBlacklist::contains($word);
             }

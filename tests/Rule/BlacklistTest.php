@@ -36,4 +36,15 @@ class BlacklistTest extends TestCase
 
         $blacklist($password);
     }
+
+    public function test_it_is_case_insensitive()
+    {
+        self::expectException(InvalidPassword::class);
+
+        $lowerCasePassword  = 'blackliststring';
+        $password  = 'Blackliststring';
+        $blacklist = new Blacklist([$lowerCasePassword]); 
+
+        $blacklist($password);
+    }
 }
