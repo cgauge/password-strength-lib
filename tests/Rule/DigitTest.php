@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /*
     Password Strength Library
     Copyright (C) 2019 CustomerGauge
@@ -21,26 +24,26 @@
 
 namespace Tests\CustomerGauge\Password\Rule;
 
-use PHPUnit\Framework\TestCase;
-use CustomerGauge\Password\Rule\Digit;
 use CustomerGauge\Password\Exception\InvalidPassword;
+use CustomerGauge\Password\Rule\Digit;
+use PHPUnit\Framework\TestCase;
 
 class DigitTest extends TestCase
 {
-    public function test_it_can_validate_at_least_one_digit()
+    public function test_it_can_validate_at_least_one_digit(): void
     {
-        self::expectException(InvalidPassword::class);
+        $this->expectException(InvalidPassword::class);
 
-        $digit = new Digit(); 
+        $digit = new Digit();
 
         $digit('password');
     }
 
-    public function test_it_can_validate_at_least_two_digits()
+    public function test_it_can_validate_at_least_two_digits(): void
     {
-        self::expectException(InvalidPassword::class);
+        $this->expectException(InvalidPassword::class);
 
-        $digit = new Digit(2); 
+        $digit = new Digit(2);
 
         $digit('Password1!');
     }

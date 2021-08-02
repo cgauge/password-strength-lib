@@ -24,16 +24,15 @@ declare(strict_types=1);
 namespace CustomerGauge\Password;
 
 use CustomerGauge\Password\Exception\InvalidPassword;
+
 use function random_int;
 use function strlen;
 
 final class Generator
 {
-    /** @var Rule */
-    private $rule;
+    private Rule $rule;
 
-    /** @var int */
-    private $length;
+    private int $length;
 
     public function __construct(Rule $rule, int $length = 12)
     {
@@ -41,7 +40,7 @@ final class Generator
         $this->length = $length;
     }
 
-    public function __invoke() : string
+    public function __invoke(): string
     {
         try {
             $password = $this->generate();
@@ -54,7 +53,7 @@ final class Generator
         }
     }
 
-    public function generate() : string
+    public function generate(): string
     {
         $chars    = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789`-=~!@#$%^&*()_+,./<>?;:[]{}\|';
         $password = '';

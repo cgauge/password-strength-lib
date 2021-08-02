@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /*
     Password Strength Library
     Copyright (C) 2019 CustomerGauge
@@ -21,16 +24,17 @@
 
 namespace Tests\CustomerGauge\Password;
 
-use PHPUnit\Framework\TestCase;
-use CustomerGauge\Password\RuleChain;
 use CustomerGauge\Password\Generator;
+use CustomerGauge\Password\RuleChain;
+use PHPUnit\Framework\TestCase;
 
 class GeneratorTest extends TestCase
 {
-    public function test_it_can_generate_valid_passwords_based_on_rules()
+    public function test_it_can_generate_valid_passwords_based_on_rules(): void
     {
-        $rules = new RuleChain(function(){}); 
-        
+        $rules = new RuleChain(static function (): void {
+        });
+
         $passwordGenerator = new Generator($rules);
 
         self::assertIsString($passwordGenerator());

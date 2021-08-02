@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /*
     Password Strength Library
     Copyright (C) 2019 CustomerGauge
@@ -21,24 +24,24 @@
 
 namespace Tests\CustomerGauge\Password\Rule;
 
-use PHPUnit\Framework\TestCase;
-use CustomerGauge\Password\Rule\Length;
 use CustomerGauge\Password\Exception\InvalidPassword;
+use CustomerGauge\Password\Rule\Length;
+use PHPUnit\Framework\TestCase;
 
 class LengthTest extends TestCase
 {
-    public function test_it_can_validate_min_length()
+    public function test_it_can_validate_min_length(): void
     {
-        self::expectException(InvalidPassword::class);
+        $this->expectException(InvalidPassword::class);
 
         $length = new Length(10);
 
         $length('sõês é~i!');
     }
 
-    public function test_it_can_validate_max_length()
+    public function test_it_can_validate_max_length(): void
     {
-        self::expectException(InvalidPassword::class);
+        $this->expectException(InvalidPassword::class);
 
         $length = new Length(1, 6);
 

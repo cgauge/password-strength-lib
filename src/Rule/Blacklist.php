@@ -25,15 +25,16 @@ namespace CustomerGauge\Password\Rule;
 
 use CustomerGauge\Password\Exception\InBlacklist;
 use CustomerGauge\Password\Rule;
+
 use function mb_strpos;
+use function mb_strtolower;
 
 final class Blacklist implements Rule
 {
     /** @var string[] */
-    private $words;
+    private array $words;
 
-    /** @var string */
-    private $encoding;
+    private string $encoding;
 
     /**
      * @param string[] $words
@@ -44,7 +45,7 @@ final class Blacklist implements Rule
         $this->encoding = $encoding;
     }
 
-    public function __invoke(string $password) : void
+    public function __invoke(string $password): void
     {
         $password = mb_strtolower($password, $this->encoding);
         foreach ($this->words as $word) {

@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /*
     Password Strength Library
     Copyright (C) 2019 CustomerGauge
@@ -21,14 +24,14 @@
 
 namespace Tests\CustomerGauge\Password;
 
-use PHPUnit\Framework\TestCase;
-use CustomerGauge\Password\Rule;
-use CustomerGauge\Password\PersistRuleChain;
 use CustomerGauge\Password\Exception\InvalidPassword;
+use CustomerGauge\Password\PersistRuleChain;
+use CustomerGauge\Password\Rule;
+use PHPUnit\Framework\TestCase;
 
 class PersistRuleChainTest extends TestCase
 {
-    public function test_it_can_validate_rules()
+    public function test_it_can_validate_rules(): void
     {
         $rule = $this->createMock(Rule::class);
 
@@ -40,12 +43,12 @@ class PersistRuleChainTest extends TestCase
         self::assertTrue($validate('password'));
     }
 
-    public function test_it_returns_false_when_there_is_an_exception()
+    public function test_it_returns_false_when_there_is_an_exception(): void
     {
         $rule = $this->createMock(Rule::class);
 
         $rule->method('__invoke')
-            ->will($this->throwException(new InvalidPassword));
+            ->will($this->throwException(new InvalidPassword()));
 
         $validate = new PersistRuleChain($rule);
 

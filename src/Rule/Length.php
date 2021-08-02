@@ -25,18 +25,16 @@ namespace CustomerGauge\Password\Rule;
 
 use CustomerGauge\Password\Exception\InvalidLength;
 use CustomerGauge\Password\Rule;
+
 use function mb_strlen;
 
 final class Length implements Rule
 {
-    /** @var int */
-    private $min;
+    private int $min;
 
-    /** @var int|null */
-    private $max;
+    private ?int $max = null;
 
-    /** @var string */
-    private $encoding;
+    private string $encoding;
 
     public function __construct(int $min, ?int $max = null, string $encoding = 'utf8')
     {
@@ -45,7 +43,7 @@ final class Length implements Rule
         $this->encoding = $encoding;
     }
 
-    public function __invoke(string $password) : void
+    public function __invoke(string $password): void
     {
         $length = (int) mb_strlen($password, $this->encoding);
 

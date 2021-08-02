@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /*
     Password Strength Library
     Copyright (C) 2019 CustomerGauge
@@ -21,26 +24,26 @@
 
 namespace Tests\CustomerGauge\Password\Rule;
 
-use PHPUnit\Framework\TestCase;
-use CustomerGauge\Password\Rule\Lowercase;
 use CustomerGauge\Password\Exception\InvalidPassword;
+use CustomerGauge\Password\Rule\Lowercase;
+use PHPUnit\Framework\TestCase;
 
 class LowercaseTest extends TestCase
 {
-    public function test_it_can_validate_at_least_one_lowercase_letter()
+    public function test_it_can_validate_at_least_one_lowercase_letter(): void
     {
-        self::expectException(InvalidPassword::class);
+        $this->expectException(InvalidPassword::class);
 
-        $lowercase = new Lowercase(); 
+        $lowercase = new Lowercase();
 
         $lowercase('PASSWORD');
     }
 
-    public function test_it_can_validate_at_least_two_lowercase_letters()
+    public function test_it_can_validate_at_least_two_lowercase_letters(): void
     {
-        self::expectException(InvalidPassword::class);
+        $this->expectException(InvalidPassword::class);
 
-        $lowercase = new Lowercase(2); 
+        $lowercase = new Lowercase(2);
 
         $lowercase('PASSWORd!');
     }

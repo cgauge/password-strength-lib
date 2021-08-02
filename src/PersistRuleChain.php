@@ -24,15 +24,16 @@ declare(strict_types=1);
 namespace CustomerGauge\Password;
 
 use CustomerGauge\Password\Exception\InvalidPassword;
+
 use function count;
 
 final class PersistRuleChain
 {
     /** @var callable[] */
-    private $rules;
+    private array $rules;
 
     /** @var InvalidPassword[] */
-    private $exceptions = [];
+    private array $exceptions = [];
 
     public function __construct(callable ...$rules)
     {
@@ -42,15 +43,15 @@ final class PersistRuleChain
     /**
      * @return InvalidPassword[]
      */
-    public function exceptions() : array
+    public function exceptions(): array
     {
         return $this->exceptions;
     }
 
-    public function __invoke(string $password) : bool
+    public function __invoke(string $password): bool
     {
         $this->exceptions = [];
-        
+
         foreach ($this->rules as $validate) {
             try {
                 $validate($password);
@@ -59,10 +60,6 @@ final class PersistRuleChain
             }
         }
 
-        if (count($this->exceptions)) {
-            return false;
-        }
-
-        return true;
+        return count($this->exceptions) === 0;
     }
 }

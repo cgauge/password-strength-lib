@@ -25,9 +25,9 @@ namespace CustomerGauge\Password\Exception;
 
 use function sprintf;
 
-class WeakTopology extends InvalidPassword
+final class WeakTopology extends InvalidPassword
 {
-    public static function matches(string $topology) : self
+    public static function matches(string $topology): self
     {
         return new static(sprintf('Common topology [%s] is not allowed.', $topology));
     }

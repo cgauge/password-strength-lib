@@ -13,7 +13,7 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
-        "doctrine/coding-standard": "^8.0",
+        "doctrine/coding-standard": "^9.0",
         "phpstan/phpstan": "^0.12.64"
     },
     "autoload": {
@@ -25,5 +25,9 @@
         "psr-4": {
             "Test\\CustomerGauge\\Password\\": "tests/"
         }
+    },
+    "scripts": {
+        "phpstan": "phpstan analyze src --level 8",
+        "static-analyze": ["phpcs", "@phpstan"]
     }
 }

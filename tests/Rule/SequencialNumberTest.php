@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /*
     Password Strength Library
     Copyright (C) 2019 CustomerGauge
@@ -21,26 +24,26 @@
 
 namespace Tests\CustomerGauge\Password\Rule;
 
-use PHPUnit\Framework\TestCase;
-use CustomerGauge\Password\Rule\SequencialNumber;
 use CustomerGauge\Password\Exception\InvalidPassword;
+use CustomerGauge\Password\Rule\SequencialNumber;
+use PHPUnit\Framework\TestCase;
 
 class SequencialNumberTest extends TestCase
 {
-    public function test_it_can_validate_sequencial_numbers()
+    public function test_it_can_validate_sequencial_numbers(): void
     {
-        self::expectException(InvalidPassword::class);
+        $this->expectException(InvalidPassword::class);
 
-        $sequencial = new SequencialNumber; 
+        $sequencial = new SequencialNumber();
 
         $sequencial('password123');
     }
 
-    public function test_it_can_validate_sequencial_numbers_decreasing()
+    public function test_it_can_validate_sequencial_numbers_decreasing(): void
     {
-        self::expectException(InvalidPassword::class);
+        $this->expectException(InvalidPassword::class);
 
-        $sequencial = new SequencialNumber; 
+        $sequencial = new SequencialNumber();
 
         $sequencial('password321');
     }
