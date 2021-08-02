@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /*
     Password Strength Library
     Copyright (C) 2019 CustomerGauge
@@ -21,29 +24,29 @@
 
 namespace Tests\CustomerGauge\Password\Rule;
 
-use PHPUnit\Framework\TestCase;
-use CustomerGauge\Password\Rule\Blacklist;
 use CustomerGauge\Password\Exception\InvalidPassword;
+use CustomerGauge\Password\Rule\Blacklist;
+use PHPUnit\Framework\TestCase;
 
 class BlacklistTest extends TestCase
 {
-    public function test_it_can_validate_a_blacklist()
+    public function test_it_can_validate_a_blacklist(): void
     {
-        self::expectException(InvalidPassword::class);
+        $this->expectException(InvalidPassword::class);
 
         $password  = 'blackliststring';
-        $blacklist = new Blacklist([$password]); 
+        $blacklist = new Blacklist([$password]);
 
         $blacklist($password);
     }
 
-    public function test_it_is_case_insensitive()
+    public function test_it_is_case_insensitive(): void
     {
-        self::expectException(InvalidPassword::class);
+        $this->expectException(InvalidPassword::class);
 
-        $lowerCasePassword  = 'blackliststring';
-        $password  = 'Blackliststring';
-        $blacklist = new Blacklist([$lowerCasePassword]); 
+        $lowerCasePassword = 'blackliststring';
+        $password          = 'Blackliststring';
+        $blacklist         = new Blacklist([$lowerCasePassword]);
 
         $blacklist($password);
     }

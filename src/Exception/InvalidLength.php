@@ -25,9 +25,9 @@ namespace CustomerGauge\Password\Exception;
 
 use function sprintf;
 
-class InvalidLength extends InvalidPassword
+final class InvalidLength extends InvalidPassword
 {
-    public static function requires(string $type, int $required, int $provided) : self
+    public static function requires(string $type, int $required, int $provided): self
     {
         $message = sprintf(
             'The %s length should be %d character(s) and %d was provided.',

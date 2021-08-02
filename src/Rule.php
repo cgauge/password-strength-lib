@@ -25,5 +25,5 @@ namespace CustomerGauge\Password;
 
 interface Rule
 {
-    public function __invoke(string $password) : void;
+    public function __invoke(string $password): void;
 }

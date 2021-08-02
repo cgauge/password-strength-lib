@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /*
     Password Strength Library
     Copyright (C) 2019 CustomerGauge
@@ -21,26 +24,26 @@
 
 namespace Tests\CustomerGauge\Password\Rule;
 
-use PHPUnit\Framework\TestCase;
-use CustomerGauge\Password\Rule\Uppercase;
 use CustomerGauge\Password\Exception\InvalidPassword;
+use CustomerGauge\Password\Rule\Uppercase;
+use PHPUnit\Framework\TestCase;
 
 class UppercaseTest extends TestCase
 {
-    public function test_it_can_validate_at_least_one_uppercase_letter()
+    public function test_it_can_validate_at_least_one_uppercase_letter(): void
     {
-        self::expectException(InvalidPassword::class);
+        $this->expectException(InvalidPassword::class);
 
-        $uppercase = new Uppercase(); 
+        $uppercase = new Uppercase();
 
         $uppercase('password');
     }
 
-    public function test_it_can_validate_at_least_two_uppercase_letters()
+    public function test_it_can_validate_at_least_two_uppercase_letters(): void
     {
-        self::expectException(InvalidPassword::class);
+        $this->expectException(InvalidPassword::class);
 
-        $uppercase = new Uppercase(2); 
+        $uppercase = new Uppercase(2);
 
         $uppercase('Password!');
     }

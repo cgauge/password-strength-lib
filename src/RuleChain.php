@@ -26,14 +26,14 @@ namespace CustomerGauge\Password;
 final class RuleChain implements Rule
 {
     /** @var callable[] */
-    private $rules;
+    private array $rules;
 
     public function __construct(callable ...$rules)
     {
         $this->rules = $rules;
     }
 
-    public function __invoke(string $password) : void
+    public function __invoke(string $password): void
     {
         foreach ($this->rules as $validate) {
             $validate($password);

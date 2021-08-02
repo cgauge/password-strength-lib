@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /*
     Password Strength Library
     Copyright (C) 2019 CustomerGauge
@@ -21,26 +24,26 @@
 
 namespace Tests\CustomerGauge\Password\Rule;
 
-use PHPUnit\Framework\TestCase;
-use CustomerGauge\Password\Rule\SpecialCharacter;
 use CustomerGauge\Password\Exception\InvalidPassword;
+use CustomerGauge\Password\Rule\SpecialCharacter;
+use PHPUnit\Framework\TestCase;
 
 class SpecialCharacterTest extends TestCase
 {
-    public function test_it_can_validate_at_least_one_special_letter()
+    public function test_it_can_validate_at_least_one_special_letter(): void
     {
-        self::expectException(InvalidPassword::class);
+        $this->expectException(InvalidPassword::class);
 
-        $special = new SpecialCharacter(); 
+        $special = new SpecialCharacter();
 
         $special('nospecial');
     }
 
-    public function test_it_can_validate_at_least_two_special_letters()
+    public function test_it_can_validate_at_least_two_special_letters(): void
     {
-        self::expectException(InvalidPassword::class);
+        $this->expectException(InvalidPassword::class);
 
-        $special = new SpecialCharacter(2); 
+        $special = new SpecialCharacter(2);
 
         $special('onespecial!');
     }

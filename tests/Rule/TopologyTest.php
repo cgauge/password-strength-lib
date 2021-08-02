@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /*
     Password Strength Library
     Copyright (C) 2019 CustomerGauge
@@ -21,20 +24,20 @@
 
 namespace Tests\CustomerGauge\Password\Rule;
 
-use PHPUnit\Framework\TestCase;
-use CustomerGauge\Password\Rule\Topology;
 use CustomerGauge\Password\Exception\InvalidPassword;
+use CustomerGauge\Password\Rule\Topology;
+use PHPUnit\Framework\TestCase;
 
 class TopologyTest extends TestCase
 {
     /**
      * @dataProvider topologies
      */
-    public function test_it_can_validate_a_topology($format, $password)
+    public function test_it_can_validate_a_topology($format, $password): void
     {
-        self::expectException(InvalidPassword::class);
+        $this->expectException(InvalidPassword::class);
 
-        $topology = new Topology($format); 
+        $topology = new Topology($format);
 
         $topology($password);
     }
@@ -48,5 +51,5 @@ class TopologyTest extends TestCase
             'using symbols'   => ['sss', '!@#'],
             'using mixed'     => ['ulds', 'Ab1!'],
         ];
-    } 
+    }
 }

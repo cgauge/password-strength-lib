@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /*
     Password Strength Library
     Copyright (C) 2019 CustomerGauge
@@ -21,13 +24,13 @@
 
 namespace Tests\CustomerGauge\Password;
 
-use PHPUnit\Framework\TestCase;
 use CustomerGauge\Password\Rule;
 use CustomerGauge\Password\RuleChain;
+use PHPUnit\Framework\TestCase;
 
 class RuleChainTest extends TestCase
 {
-    public function test_it_can_validate_rules()
+    public function test_it_can_validate_rules(): void
     {
         $rule = $this->createMock(Rule::class);
 
@@ -39,11 +42,12 @@ class RuleChainTest extends TestCase
         $validate('password');
     }
 
-    public function test_it_can_validate_callables()
+    public function test_it_can_validate_callables(): void
     {
-        $function = function() {};
+        $function = static function (): void {
+        };
 
-        $customMethod = new FixtureCustomMethod;
+        $customMethod = new FixtureCustomMethod();
 
         $rule = $this->createMock(Rule::class);
 
@@ -63,7 +67,7 @@ class RuleChainTest extends TestCase
 
 class FixtureCustomMethod
 {
-    public function customMethod(string $value) : void
+    public function customMethod(string $value): void
     {
     }
 }

@@ -23,9 +23,9 @@ declare(strict_types=1);
 
 namespace CustomerGauge\Password\Exception;
 
-class SequencialNumber extends InvalidPassword
+final class SequencialNumber extends InvalidPassword
 {
-    public static function notAllowed() : self
+    public static function notAllowed(): self
     {
         return new static('Sequential numbers are not allowed.');
     }

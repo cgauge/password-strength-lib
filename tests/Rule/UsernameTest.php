@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /*
     Password Strength Library
     Copyright (C) 2019 CustomerGauge
@@ -21,20 +24,20 @@
 
 namespace Tests\CustomerGauge\Password\Rule;
 
-use PHPUnit\Framework\TestCase;
-use CustomerGauge\Password\Rule\Username;
 use CustomerGauge\Password\Exception\InvalidPassword;
+use CustomerGauge\Password\Rule\Username;
+use PHPUnit\Framework\TestCase;
 
 class UsernameTest extends TestCase
 {
     /**
      * @dataProvider usernames
      */
-    public function test_it_can_validate_a_username($password, $username)
+    public function test_it_can_validate_a_username($password, $username): void
     {
-        self::expectException(InvalidPassword::class);
+        $this->expectException(InvalidPassword::class);
 
-        $blacklist = new Username([$username]); 
+        $blacklist = new Username([$username]);
 
         $blacklist($password);
     }

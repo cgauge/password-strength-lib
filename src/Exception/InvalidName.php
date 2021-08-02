@@ -25,9 +25,9 @@ namespace CustomerGauge\Password\Exception;
 
 use function sprintf;
 
-class InvalidName extends InvalidPassword
+final class InvalidName extends InvalidPassword
 {
-    public static function contains(string $name) : self
+    public static function contains(string $name): self
     {
         return new static(sprintf('The [%s] should not be used.', $name));
     }

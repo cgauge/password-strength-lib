@@ -25,6 +25,7 @@ namespace CustomerGauge\Password\Rule;
 
 use CustomerGauge\Password\Exception\InvalidName;
 use CustomerGauge\Password\Rule;
+
 use function mb_strpos;
 use function mb_strtolower;
 use function mb_substr;
@@ -34,10 +35,9 @@ final class Username implements Rule
     public const INICIAL_SIZE = 4;
 
     /** @var string[] */
-    private $usernames;
+    private array $usernames;
 
-    /** @var string */
-    private $encoding;
+    private string $encoding;
 
     /**
      * @param string[] $usernames
@@ -48,7 +48,7 @@ final class Username implements Rule
         $this->encoding  = $encoding;
     }
 
-    public function __invoke(string $password) : void
+    public function __invoke(string $password): void
     {
         foreach ($this->usernames as $username) {
             $this->find($password, $username);
@@ -59,14 +59,14 @@ final class Username implements Rule
         }
     }
 
-    private function find(string $password, string $username) : void
+    private function find(string $password, string $username): void
     {
         if (mb_strpos($password, $username, 0, $this->encoding) !== false) {
             throw InvalidName::contains($username);
         }
     }
 
-    private function findNormalizedUsername(string $password, string $username) : void
+    private function findNormalizedUsername(string $password, string $username): void
     {
         $username = mb_strtolower($username, $this->encoding);
         $password = mb_strtolower($password, $this->encoding);
@@ -74,7 +74,7 @@ final class Username implements Rule
         $this->find($password, $username);
     }
 
-    private function findInicialUsername(string $password, string $username) : void
+    private function findInicialUsername(string $password, string $username): void
     {
         $username = mb_strtolower($username, $this->encoding);
         $password = mb_strtolower($password, $this->encoding);
