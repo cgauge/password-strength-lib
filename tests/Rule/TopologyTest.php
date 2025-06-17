@@ -26,14 +26,13 @@ namespace Tests\CustomerGauge\Password\Rule;
 
 use CustomerGauge\Password\Exception\InvalidPassword;
 use CustomerGauge\Password\Rule\Topology;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class TopologyTest extends TestCase
 {
-    /**
-     * @dataProvider topologies
-     */
-    public function test_it_can_validate_a_topology($format, $password): void
+    #[DataProvider('topologies')]
+    public function testItCanValidateATopology(string $format, string $password): void
     {
         $this->expectException(InvalidPassword::class);
 
@@ -42,7 +41,7 @@ class TopologyTest extends TestCase
         $topology($password);
     }
 
-    public function topologies()
+    public static function topologies(): mixed
     {
         return [
             'using lowercase' => ['lll', 'abc'],

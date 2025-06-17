@@ -30,7 +30,7 @@ use PHPUnit\Framework\TestCase;
 
 class BlacklistTest extends TestCase
 {
-    public function test_it_can_validate_a_blacklist(): void
+    public function testItCanValidateABlacklist(): void
     {
         $this->expectException(InvalidPassword::class);
 
@@ -40,7 +40,7 @@ class BlacklistTest extends TestCase
         $blacklist($password);
     }
 
-    public function test_it_is_case_insensitive(): void
+    public function testItIsCaseInsensitive(): void
     {
         $this->expectException(InvalidPassword::class);
 

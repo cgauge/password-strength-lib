@@ -30,7 +30,7 @@ use PHPUnit\Framework\TestCase;
 
 class LengthTest extends TestCase
 {
-    public function test_it_can_validate_min_length(): void
+    public function testItCanValidateMinLength(): void
     {
         $this->expectException(InvalidPassword::class);
 
@@ -39,7 +39,7 @@ class LengthTest extends TestCase
         $length('sõês é~i!');
     }
 
-    public function test_it_can_validate_max_length(): void
+    public function testItCanValidateMaxLength(): void
     {
         $this->expectException(InvalidPassword::class);
 

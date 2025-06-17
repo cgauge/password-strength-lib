@@ -30,14 +30,8 @@ use function strlen;
 
 final class Generator
 {
-    private Rule $rule;
-
-    private int $length;
-
-    public function __construct(Rule $rule, int $length = 12)
+    public function __construct(private Rule $rule, private int $length = 12)
     {
-        $this->rule   = $rule;
-        $this->length = $length;
     }
 
     public function __invoke(): string
@@ -48,7 +42,7 @@ final class Generator
             $this->rule->__invoke($password);
 
             return $password;
-        } catch (InvalidPassword $e) {
+        } catch (InvalidPassword) {
             return $this->__invoke();
         }
     }

@@ -32,20 +32,11 @@ use function mb_substr;
 
 final class Username implements Rule
 {
-    public const INICIAL_SIZE = 4;
+    public const int INICIAL_SIZE = 4;
 
-    /** @var string[] */
-    private array $usernames;
-
-    private string $encoding;
-
-    /**
-     * @param string[] $usernames
-     */
-    public function __construct(array $usernames, string $encoding = 'utf8')
+    /** @param string[] $usernames */
+    public function __construct(private array $usernames, private string $encoding = 'utf8')
     {
-        $this->usernames = $usernames;
-        $this->encoding  = $encoding;
     }
 
     public function __invoke(string $password): void

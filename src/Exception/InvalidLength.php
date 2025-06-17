@@ -33,7 +33,7 @@ final class InvalidLength extends InvalidPassword
             'The %s length should be %d character(s) and %d was provided.',
             $type,
             $required,
-            $provided
+            $provided,
         );
 
         return new static($message);

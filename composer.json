@@ -23,13 +23,14 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Test\\CustomerGauge\\Password\\": "tests/"
+            "Tests\\CustomerGauge\\Password\\": "tests/"
         }
     },
     "scripts": {
         "lint": "phpcs",
         "stan": "phpstan analyze --level=9 ./src ./tests",
-        "test": "phpunit"
+        "test": "phpunit",
+        "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-text"
     },
     "config": {
         "allow-plugins": {

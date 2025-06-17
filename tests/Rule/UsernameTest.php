@@ -26,14 +26,13 @@ namespace Tests\CustomerGauge\Password\Rule;
 
 use CustomerGauge\Password\Exception\InvalidPassword;
 use CustomerGauge\Password\Rule\Username;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class UsernameTest extends TestCase
 {
-    /**
-     * @dataProvider usernames
-     */
-    public function test_it_can_validate_a_username($password, $username): void
+    #[DataProvider('usernames')]
+    public function testItCanValidateAUsername(string $password, string $username): void
     {
         $this->expectException(InvalidPassword::class);
 
@@ -42,7 +41,7 @@ class UsernameTest extends TestCase
         $blacklist($password);
     }
 
-    public function usernames()
+    public static function usernames(): mixed
     {
         return [
             'Same username' => ['username', 'username'],

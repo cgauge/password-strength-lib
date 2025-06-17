@@ -30,17 +30,11 @@ use function mb_strlen;
 
 final class SequencialNumber implements Rule
 {
-    public const ASCENDING  = 'ASC';
-    public const DESCENDING = 'DESC';
+    public const string ASCENDING  = 'ASC';
+    public const string DESCENDING = 'DESC';
 
-    private int $count;
-
-    private string $encoding;
-
-    public function __construct(int $count = 3, string $encoding = 'utf8')
+    public function __construct(private int $count = 3, private string $encoding = 'utf8')
     {
-        $this->count    = $count;
-        $this->encoding = $encoding;
     }
 
     public function __invoke(string $password): void

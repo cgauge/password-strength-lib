@@ -31,11 +31,8 @@ use function preg_match;
 
 final class SpecialCharacter implements Rule
 {
-    private int $count;
-
-    public function __construct(int $count = 1)
+    public function __construct(private int $count = 1)
     {
-        $this->count = $count;
     }
 
     public function __invoke(string $password): void
