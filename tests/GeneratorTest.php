@@ -30,13 +30,13 @@ use PHPUnit\Framework\TestCase;
 
 class GeneratorTest extends TestCase
 {
-    public function test_it_can_generate_valid_passwords_based_on_rules(): void
+    public function testItCanGenerateValidPasswordsBasedOnRules(): void
     {
         $rules = new RuleChain(static function (): void {
         });
 
         $passwordGenerator = new Generator($rules);
 
-        self::assertIsString($passwordGenerator());
+        self::assertNotEmpty($passwordGenerator());
     }
 }

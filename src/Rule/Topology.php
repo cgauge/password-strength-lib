@@ -48,7 +48,7 @@ final class Topology implements Rule
         }
     }
 
-    private function convertToTopology(string $password): ?string
+    private function convertToTopology(string $password): string|null
     {
         $patterns     = ['/[a-z]/', '/[A-Z]/', '/[0-9]/', '/[^lud]/'];
         $replacements = ['l', 'u', 'd', 's'];

@@ -30,7 +30,7 @@ use PHPUnit\Framework\TestCase;
 
 class SequencialNumberTest extends TestCase
 {
-    public function test_it_can_validate_sequencial_numbers(): void
+    public function testItCanValidateSequencialNumbers(): void
     {
         $this->expectException(InvalidPassword::class);
 
@@ -39,7 +39,7 @@ class SequencialNumberTest extends TestCase
         $sequencial('password123');
     }
 
-    public function test_it_can_validate_sequencial_numbers_decreasing(): void
+    public function testItCanValidateSequencialNumbersDecreasing(): void
     {
         $this->expectException(InvalidPassword::class);
 

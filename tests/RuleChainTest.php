@@ -30,7 +30,7 @@ use PHPUnit\Framework\TestCase;
 
 class RuleChainTest extends TestCase
 {
-    public function test_it_can_validate_rules(): void
+    public function testItCanValidateRules(): void
     {
         $rule = $this->createMock(Rule::class);
 
@@ -42,7 +42,7 @@ class RuleChainTest extends TestCase
         $validate('password');
     }
 
-    public function test_it_can_validate_callables(): void
+    public function testItCanValidateCallables(): void
     {
         $function = static function (): void {
         };
@@ -58,16 +58,9 @@ class RuleChainTest extends TestCase
             'is_string',
             $function,
             [$customMethod, 'customMethod'],
-            $rule
+            $rule,
         );
 
         $validate('password');
-    }
-}
-
-class FixtureCustomMethod
-{
-    public function customMethod(string $value): void
-    {
     }
 }

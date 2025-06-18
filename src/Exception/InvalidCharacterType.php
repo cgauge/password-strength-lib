@@ -33,7 +33,7 @@ final class InvalidCharacterType extends InvalidPassword
             'Password should have at least %d %s character(s) but %d found.',
             $required,
             $type,
-            $provided
+            $provided,
         );
 
         return new static($message);

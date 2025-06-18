@@ -31,18 +31,9 @@ use function mb_strtolower;
 
 final class Blacklist implements Rule
 {
-    /** @var string[] */
-    private array $words;
-
-    private string $encoding;
-
-    /**
-     * @param string[] $words
-     */
-    public function __construct(array $words, string $encoding = 'utf8')
+    /** @param string[] $words */
+    public function __construct(private array $words, private string $encoding = 'utf8')
     {
-        $this->words    = $words;
-        $this->encoding = $encoding;
     }
 
     public function __invoke(string $password): void

@@ -9,12 +9,12 @@
         }
     ],
     "require": {
-        "php": ">=7.4"
+        "php": ">=8.2"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5",
-        "doctrine/coding-standard": "^9.0",
-        "phpstan/phpstan": "^0.12.64"
+        "phpunit/phpunit": "^12.0",
+        "doctrine/coding-standard": "^13.0",
+        "phpstan/phpstan": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -23,11 +23,18 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Test\\CustomerGauge\\Password\\": "tests/"
+            "Tests\\CustomerGauge\\Password\\": "tests/"
         }
     },
     "scripts": {
-        "phpstan": "phpstan analyze src --level 8",
-        "static-analyze": ["phpcs", "@phpstan"]
+        "lint": "phpcs",
+        "stan": "phpstan analyze --level=9 ./src ./tests",
+        "test": "phpunit",
+        "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-text"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
 }

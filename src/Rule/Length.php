@@ -30,17 +30,8 @@ use function mb_strlen;
 
 final class Length implements Rule
 {
-    private int $min;
-
-    private ?int $max = null;
-
-    private string $encoding;
-
-    public function __construct(int $min, ?int $max = null, string $encoding = 'utf8')
+    public function __construct(private int $min, private int|null $max = null, private string $encoding = 'utf8')
     {
-        $this->min      = $min;
-        $this->max      = $max;
-        $this->encoding = $encoding;
     }
 
     public function __invoke(string $password): void

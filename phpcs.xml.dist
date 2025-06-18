@@ -16,4 +16,5 @@
     <rule ref="Doctrine"/>
 
     <file>src</file>
+    <file>tests</file>
 </ruleset>

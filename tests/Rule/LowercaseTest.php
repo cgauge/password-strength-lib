@@ -30,7 +30,7 @@ use PHPUnit\Framework\TestCase;
 
 class LowercaseTest extends TestCase
 {
-    public function test_it_can_validate_at_least_one_lowercase_letter(): void
+    public function testItCanValidateAtLeastOneLowercaseLetter(): void
     {
         $this->expectException(InvalidPassword::class);
 
@@ -39,7 +39,7 @@ class LowercaseTest extends TestCase
         $lowercase('PASSWORD');
     }
 
-    public function test_it_can_validate_at_least_two_lowercase_letters(): void
+    public function testItCanValidateAtLeastTwoLowercaseLetters(): void
     {
         $this->expectException(InvalidPassword::class);
 

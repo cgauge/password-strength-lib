@@ -40,9 +40,7 @@ final class PersistRuleChain
         $this->rules = $rules;
     }
 
-    /**
-     * @return InvalidPassword[]
-     */
+    /** @return InvalidPassword[] */
     public function exceptions(): array
     {
         return $this->exceptions;

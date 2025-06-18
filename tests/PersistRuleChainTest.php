@@ -31,7 +31,7 @@ use PHPUnit\Framework\TestCase;
 
 class PersistRuleChainTest extends TestCase
 {
-    public function test_it_can_validate_rules(): void
+    public function testItCanValidateRules(): void
     {
         $rule = $this->createMock(Rule::class);
 
@@ -43,7 +43,7 @@ class PersistRuleChainTest extends TestCase
         self::assertTrue($validate('password'));
     }
 
-    public function test_it_returns_false_when_there_is_an_exception(): void
+    public function testItReturnsFalseWhenThereIsAnException(): void
     {
         $rule = $this->createMock(Rule::class);
 

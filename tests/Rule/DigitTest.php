@@ -30,7 +30,7 @@ use PHPUnit\Framework\TestCase;
 
 class DigitTest extends TestCase
 {
-    public function test_it_can_validate_at_least_one_digit(): void
+    public function testItCanValidateAtLeastOneDigit(): void
     {
         $this->expectException(InvalidPassword::class);
 
@@ -39,7 +39,7 @@ class DigitTest extends TestCase
         $digit('password');
     }
 
-    public function test_it_can_validate_at_least_two_digits(): void
+    public function testItCanValidateAtLeastTwoDigits(): void
     {
         $this->expectException(InvalidPassword::class);
 
